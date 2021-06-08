@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Transcript_Management
 {
-    public partial class Form1 : Form
+    public partial class InsertForm : Form
     {
-        public Form1()
+        public InsertForm()
         {
             InitializeComponent();
         }
