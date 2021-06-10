@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Transcript_Management
 {
-    public partial class InsertForm : Form
+    public partial class formInsert : Form
     {
-        public InsertForm()
+        public formInsert()
         {
             InitializeComponent();
         }
@@ -24,6 +24,8 @@ namespace Transcript_Management
         private void button1_Click(object sender, EventArgs e)
         {
             //TODO must check that the course has not already been added (i.e if already added, MessageBox.Show("Course already added"))
+            //TODO must check that no text boxes are left empty
+            //TODO must check that int required text boxes are only given numbers
             con.Open();
             SqlCommand command = new SqlCommand("insert into grades_table values ('"+ txtCourseName.Text + "','" + txtCourseCode.Text + "','" + int.Parse(comboBox1.Text) + "','" + txtGrade.Text + "')", con);
             command.ExecuteNonQuery();
@@ -60,6 +62,7 @@ namespace Transcript_Management
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //TODO if courseCode does not exist, as them to enter a valid course code
             if (txtCourseCode.Text != "")
             {
                 if (MessageBox.Show("Are you sure?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -76,6 +79,11 @@ namespace Transcript_Management
             {
                 MessageBox.Show("Enter a course code");
             }
+        }
+
+        private void formInsert_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
