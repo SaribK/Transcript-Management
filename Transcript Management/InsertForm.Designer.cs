@@ -134,7 +134,7 @@ namespace Transcript_Management
             this.button1.BackColor = System.Drawing.Color.Purple;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(61, 385);
+            this.button1.Location = new System.Drawing.Point(61, 400);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 38);
             this.button1.TabIndex = 3;
@@ -155,7 +155,7 @@ namespace Transcript_Management
             this.button2.BackColor = System.Drawing.Color.Purple;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(196, 385);
+            this.button2.Location = new System.Drawing.Point(196, 400);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 38);
             this.button2.TabIndex = 5;
@@ -168,7 +168,7 @@ namespace Transcript_Management
             this.button3.BackColor = System.Drawing.Color.Purple;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Location = new System.Drawing.Point(330, 385);
+            this.button3.Location = new System.Drawing.Point(330, 400);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(113, 38);
             this.button3.TabIndex = 6;
