@@ -34,7 +34,7 @@ namespace Transcript_Management
 
         void BindData()
         {
-            SqlCommand command = new SqlCommand("select * from grades_table", con);
+            SqlCommand command = new SqlCommand("select courseName as 'Course Name', courseCode as 'Course Code', courseYear as 'Year Taken', courseGrade as 'Grade' from grades_table", con);
             SqlDataAdapter sd = new SqlDataAdapter(command);
             DataTable dt = new DataTable();
             sd.Fill(dt);
@@ -56,6 +56,26 @@ namespace Transcript_Management
             con.Close();
             MessageBox.Show("Successfully Updated.");
             BindData();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (txtCourseCode.Text != "")
+            {
+                if (MessageBox.Show("Are you sure?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    con.Open();
+                    SqlCommand command = new SqlCommand("Delete grades_table where courseCode = '" + txtCourseCode.Text + "'", con);
+                    command.ExecuteNonQuery();
+                    con.Close();
+                    MessageBox.Show("Successfully Deleted.");
+                    BindData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a course code");
+            }
         }
     }
 }
