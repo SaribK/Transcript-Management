@@ -34,7 +34,6 @@ namespace Transcript_Management
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -63,7 +62,7 @@ namespace Transcript_Management
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(731, 27);
+            this.label1.Location = new System.Drawing.Point(703, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 20);
             this.label1.TabIndex = 2;
@@ -78,37 +77,27 @@ namespace Transcript_Management
             "2",
             "3",
             "4"});
-            this.comboBox1.Location = new System.Drawing.Point(878, 61);
+            this.comboBox1.Location = new System.Drawing.Point(706, 61);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(40, 21);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(731, 62);
+            this.label2.Location = new System.Drawing.Point(752, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 20);
+            this.label2.Size = new System.Drawing.Size(149, 20);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Specific Year GPA";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(924, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "xxx";
+            this.label2.Text = "Specific Year GPA: ";
             // 
             // formHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 531);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
@@ -116,6 +105,7 @@ namespace Transcript_Management
             this.Controls.Add(this.button1);
             this.Name = "formHome";
             this.Text = "Home Page";
+            this.Load += new System.EventHandler(this.formHome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,6 +118,5 @@ namespace Transcript_Management
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
     }
 }
