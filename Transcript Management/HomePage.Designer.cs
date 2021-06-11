@@ -105,6 +105,7 @@ namespace Transcript_Management
             this.Controls.Add(this.button1);
             this.Name = "formHome";
             this.Text = "Home Page";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formHome_FormClosed);
             this.Load += new System.EventHandler(this.formHome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

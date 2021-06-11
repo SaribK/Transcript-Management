@@ -62,5 +62,10 @@ namespace Transcript_Management
                 label2.Text = "Specific Year GPA: " + value2;
             }
         }
+
+        private void formHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

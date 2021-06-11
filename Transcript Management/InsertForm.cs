@@ -85,5 +85,19 @@ namespace Transcript_Management
         {
             Application.Exit();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            formHome fH = new formHome();
+            this.Hide();
+            fH.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            formSearch fS = new formSearch();
+            this.Hide();
+            fS.ShowDialog();
+        }
     }
 }

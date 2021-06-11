@@ -34,5 +34,19 @@ namespace Transcript_Management
             sd.Fill(dt);
             dataGridView1.DataSource = dt;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            formHome fH = new formHome();
+            this.Hide();
+            fH.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            formInsert fI = new formInsert();
+            this.Hide();
+            fI.ShowDialog();
+        }
     }
 }
