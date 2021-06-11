@@ -194,7 +194,7 @@ namespace Transcript_Management
             this.button4.BackColor = System.Drawing.Color.Purple;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button4.Location = new System.Drawing.Point(708, 28);
+            this.button4.Location = new System.Drawing.Point(33, 28);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(113, 38);
             this.button4.TabIndex = 10;

@@ -25,16 +25,6 @@ namespace Transcript_Management
 
         SqlConnection con = new SqlConnection("Data Source=DESKTOP-OFIG42E\\SQLEXPRESS;Initial Catalog=TranscriptDB;Persist Security Info=True;User ID=sarib;Password=sarib2001");
 
-        //search database
-        private void button1_Click(object sender, EventArgs e)
-        {
-            SqlCommand command = new SqlCommand("SELECT courseName as 'Course Name', courseCode as 'Course Code', courseYear as 'Year Taken', courseGrade as 'Grade' FROM grades_table where courseCode LIKE '%" + txtCourseCode.Text+"%'", con);
-            SqlDataAdapter sd = new SqlDataAdapter(command);
-            DataTable dt = new DataTable();
-            sd.Fill(dt);
-            dataGridView1.DataSource = dt;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             formHome fH = new formHome();
@@ -47,6 +37,16 @@ namespace Transcript_Management
             formInsert fI = new formInsert();
             this.Hide();
             fI.ShowDialog();
+        }
+
+        // Search database
+        private void search(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("SELECT courseName as 'Course Name', courseCode as 'Course Code', courseYear as 'Year Taken', courseGrade as 'Grade' FROM grades_table where courseCode LIKE '%" + txtCourseCode.Text + "%'", con);
+            SqlDataAdapter sd = new SqlDataAdapter(command);
+            DataTable dt = new DataTable();
+            sd.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
     }
 }
