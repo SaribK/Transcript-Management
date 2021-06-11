@@ -23,5 +23,12 @@ namespace Transcript_Management
             this.Hide();
             fI.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            formSearch fS = new formSearch();
+            this.Hide();
+            fS.ShowDialog();
+        }
     }
 }
