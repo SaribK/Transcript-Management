@@ -23,26 +23,40 @@ namespace Transcript_Management
         //insert into database
         private void button1_Click(object sender, EventArgs e)
         {
-            //TODO must check that no text boxes are left empty
-            //TODO must check that int required text boxes are only given numbers
-            SqlCommand command2 = new SqlCommand("SELECT count(courseName) as GPA from grades_table where courseCode = '"+txtCourseCode.Text+"'", con);
-            SqlDataAdapter sd = new SqlDataAdapter(command2);
-            DataTable dt = new DataTable();
-            sd.SelectCommand.CommandType = CommandType.Text;
-            sd.Fill(dt);
-            int count = int.Parse(dt.Rows[0].ItemArray[0].ToString());
-            if (count > 0)
+            //check that no text boxes are left empty
+            if (txtCourseCode.TextLength == 0 || txtCourseName.TextLength == 0 || txtGrade.TextLength == 0 || comboBox1.Text.Length == 0)
             {
-                MessageBox.Show("Course already added");
+                MessageBox.Show("Fill out all parts of the form");
             }
             else
             {
-                con.Open();
-                SqlCommand command = new SqlCommand("insert into grades_table values ('" + txtCourseName.Text + "','" + txtCourseCode.Text + "','" + int.Parse(comboBox1.Text) + "','" + txtGrade.Text + "')", con);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Successfully Inserted.");
-                con.Close();
-                BindData();
+                //check that int required text boxes are only given numbers
+                if (!int.TryParse(txtGrade.Text, out _))
+                {
+                    MessageBox.Show("Grade section must be a number");
+                }
+                else
+                {
+                    SqlCommand command2 = new SqlCommand("SELECT count(courseName) as GPA from grades_table where courseCode = '" + txtCourseCode.Text + "'", con);
+                    SqlDataAdapter sd = new SqlDataAdapter(command2);
+                    DataTable dt = new DataTable();
+                    sd.SelectCommand.CommandType = CommandType.Text;
+                    sd.Fill(dt);
+                    int count = int.Parse(dt.Rows[0].ItemArray[0].ToString());
+                    if (count > 0)
+                    {
+                        MessageBox.Show("Course already added");
+                    }
+                    else
+                    {
+                        con.Open();
+                        SqlCommand command = new SqlCommand("insert into grades_table values ('" + txtCourseName.Text + "','" + txtCourseCode.Text + "','" + int.Parse(comboBox1.Text) + "','" + txtGrade.Text + "')", con);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Successfully Inserted.");
+                        con.Close();
+                        BindData();
+                    }
+                }
             }
         }
 
