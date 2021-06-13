@@ -77,7 +77,6 @@ namespace Transcript_Management
         //update database
         private void button2_Click(object sender, EventArgs e)
         {
-            //TODO if txtbox has no text, do not change that column
             con.Open();
             SqlCommand command = new SqlCommand("update grades_table set " + "courseName = '" + txtCourseName.Text + "', courseYear ='" + comboBox1.Text + "', courseGrade = '" + txtGrade.Text + "' where courseCode = '" + txtCourseCode.Text + "'", con);
             command.ExecuteNonQuery();
@@ -88,17 +87,30 @@ namespace Transcript_Management
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //TODO if courseCode does not exist, as them to enter a valid course code
+            //TODO if courseCode does not exist, ask them to enter a valid course code
             if (txtCourseCode.Text != "")
             {
-                if (MessageBox.Show("Are you sure?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                SqlCommand command2 = new SqlCommand("SELECT count(courseName) from grades_table where courseCode = '" + txtCourseCode.Text + "'", con);
+                SqlDataAdapter sd = new SqlDataAdapter(command2);
+                DataTable dt = new DataTable();
+                sd.SelectCommand.CommandType = CommandType.Text;
+                sd.Fill(dt);
+                int count = int.Parse(dt.Rows[0].ItemArray[0].ToString());
+                if (count > 0)
                 {
-                    con.Open();
-                    SqlCommand command = new SqlCommand("Delete grades_table where courseCode = '" + txtCourseCode.Text + "'", con);
-                    command.ExecuteNonQuery();
-                    con.Close();
-                    MessageBox.Show("Successfully Deleted.");
-                    BindData();
+                    if (MessageBox.Show("Are you sure?", "Delete Record", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        con.Open();
+                        SqlCommand command = new SqlCommand("Delete grades_table where courseCode = '" + txtCourseCode.Text + "'", con);
+                        command.ExecuteNonQuery();
+                        con.Close();
+                        MessageBox.Show("Successfully Deleted.");
+                        BindData();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("This course does not exist");
                 }
             }
             else

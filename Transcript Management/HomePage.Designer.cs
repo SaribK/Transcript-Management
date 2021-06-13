@@ -43,7 +43,7 @@ namespace Transcript_Management
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(159, 41);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Insert Entries";
+            this.button1.Text = "Manage Entries";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
