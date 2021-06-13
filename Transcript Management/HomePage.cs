@@ -42,7 +42,14 @@ namespace Transcript_Management
             sd.SelectCommand.CommandType = CommandType.Text;
             sd.Fill(dt);
             string value = dt.Rows[0].ItemArray[0].ToString();
-            label1.Text = "Overall GPA: " + value;
+            if (value == "")
+            {
+                label1.Text = "Overall GPA: N/A";
+            }
+            else
+            {
+                label1.Text = "Overall GPA: " + value;
+            }
         }
 
         private void comboBox1_TextChanged(object sender, EventArgs e)

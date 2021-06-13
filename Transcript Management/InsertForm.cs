@@ -23,15 +23,27 @@ namespace Transcript_Management
         //insert into database
         private void button1_Click(object sender, EventArgs e)
         {
-            //TODO must check that the course has not already been added (i.e if already added, MessageBox.Show("Course already added"))
             //TODO must check that no text boxes are left empty
             //TODO must check that int required text boxes are only given numbers
-            con.Open();
-            SqlCommand command = new SqlCommand("insert into grades_table values ('"+ txtCourseName.Text + "','" + txtCourseCode.Text + "','" + int.Parse(comboBox1.Text) + "','" + txtGrade.Text + "')", con);
-            command.ExecuteNonQuery();
-            MessageBox.Show("Successfully Inserted.");
-            con.Close();
-            BindData();
+            SqlCommand command2 = new SqlCommand("SELECT count(courseName) as GPA from grades_table where courseCode = '"+txtCourseCode.Text+"'", con);
+            SqlDataAdapter sd = new SqlDataAdapter(command2);
+            DataTable dt = new DataTable();
+            sd.SelectCommand.CommandType = CommandType.Text;
+            sd.Fill(dt);
+            int count = int.Parse(dt.Rows[0].ItemArray[0].ToString());
+            if (count > 0)
+            {
+                MessageBox.Show("Course already added");
+            }
+            else
+            {
+                con.Open();
+                SqlCommand command = new SqlCommand("insert into grades_table values ('" + txtCourseName.Text + "','" + txtCourseCode.Text + "','" + int.Parse(comboBox1.Text) + "','" + txtGrade.Text + "')", con);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Successfully Inserted.");
+                con.Close();
+                BindData();
+            }
         }
 
         void BindData()
